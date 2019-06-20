@@ -2,10 +2,10 @@
   "name": "testingserver",
   "version": "0.1.0",
   "description": "Web Testing IV Challenge",
-  "main": "app/server.js",
+  "main": "server/app.js",
   "scripts": {
-    "start": "node app/server.js",
-    "start:server": "nodemon app/server.js",
+    "start": "node server/app.js",
+    "start:server": "nodemon server/app.js",
     "test": "jest --watch --verbose"
   },
   "jest": {
