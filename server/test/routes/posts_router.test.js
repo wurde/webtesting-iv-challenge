@@ -36,7 +36,9 @@ describe('posts_router.js', () => {
 
   test('DELETE /posts/:id', async () => {
     let res = await supertest(app).delete('/posts/1').send({ title: 'Test Post', content: 'This is some test content.' })
+    let post = await db('posts').where({ id: 1 })
 
     expect(res.status).toBe(200)
+    expect(post.length).toBe(0)
   })
 })

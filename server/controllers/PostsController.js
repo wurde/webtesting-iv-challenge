@@ -34,7 +34,13 @@ class PostsController {
   }
 
   static async destroy(req, res) {
-    res.sendStatus(200)
+    try {
+      await Post.destroy(req.params.id)
+      res.sendStatus(200)
+    } catch(err) {
+      console.error(err)
+      res.status(500).json({ error: { message: 'Internal Server Error' } })
+    }
   }
 }
 
