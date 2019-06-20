@@ -36,9 +36,8 @@ app.use(express.json())
  * Routes
  */
 
-app.get('/', (req, res) => {
-  res.sendStatus(200)
-})
+app.get('/', require('./routes/root_router'))
+app.get('/posts', require('./routes/posts_router'))
 
 /**
  * Dependencies
