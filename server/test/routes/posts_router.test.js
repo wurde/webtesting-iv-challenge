@@ -29,6 +29,9 @@ describe('posts_router.js', () => {
     let res = await supertest(app).post('/posts').send({ title: 'Test Post', content: 'This is some test content.' })
 
     expect(res.status).toBe(201)
+    expect(res.type).toBe('application/json')
+    expect(res.body).toBeTruthy()
+    expect(Object.keys(res.body[0]).toString()).toBe(['id', 'title', 'content', 'created_at', 'updated_at'].toString())
   })
 
   test('DELETE /posts/:id', async () => {
