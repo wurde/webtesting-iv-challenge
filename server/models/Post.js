@@ -11,24 +11,28 @@ const db = require('../db/client')
  */
 
 class Post {
-  static async all(req, res) {
-    res.sendStatus(200)
+  static async all() {
+    return await db('posts')
   }
 
-  static async find(req, res) {
-    res.sendStatus(200)
+  static async find(filter) {
+    return await db('posts').where(filter).limit(1)
   }
 
-  static async create(req, res) {
-    res.sendStatus(200)
+  static async create(post) {
+    const [id] = await db('posts').insert(post)
+
+    const new_post = await db('posts').where({ id: id })
+
+    return new_post
   }
 
   static async update(req, res) {
-    res.sendStatus(200)
+    return true
   }
 
   static async destroy(req, res) {
-    res.sendStatus(200)
+    return true
   }
 }
 

@@ -36,8 +36,8 @@ app.use(express.json())
  * Routes
  */
 
-app.get('/', require('./routes/root_router'))
-app.get('/posts', require('./routes/posts_router'))
+app.use('/', require('./routes/root_router'))
+app.use('/posts', require('./routes/posts_router'))
 
 /**
  * Dependencies

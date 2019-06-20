@@ -20,7 +20,13 @@ class PostsController {
   }
 
   static async create(req, res) {
-    res.sendStatus(200)
+    try {
+      const post = await Post.create(req.body)
+      res.status(201).json(post)
+    } catch(err) {
+      console.error(err)
+      res.status(500).json({ error: { message: 'Internal Server Error' } })
+    }
   }
 
   static async update(req, res) {
