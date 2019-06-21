@@ -24,6 +24,7 @@
   "devDependencies": {
     "faker": "^4.1.0",
     "jest": "^24.8.0",
+    "license-checker": "^25.0.1",
     "nodemon": "^1.19.1",
     "supertest": "^4.0.2"
   },
