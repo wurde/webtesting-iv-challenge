@@ -40,6 +40,13 @@ app.use('/', require('./routes/root_router'))
 app.use('/posts', require('./routes/posts_router'))
 
 /**
+ * Error handlers
+ */
+
+app.use(require('./middleware/errors/page_not_found'))
+app.use(require('./middleware/errors/render_error'))
+
+/**
  * Start server
  */
 
