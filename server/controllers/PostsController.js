@@ -22,7 +22,13 @@ class PostsController {
   }
 
   static async show(req, res) {
-    res.sendStatus(200)
+    try {
+      let post = await Post.find({ id: req.params.id })
+      res.status(200).json(post)
+    } catch(err) {
+      console.error(err)
+      res.status(500).json({ error: { message: 'Internal Server Error' } })
+    }
   }
 
   static async create(req, res) {
@@ -36,7 +42,13 @@ class PostsController {
   }
 
   static async update(req, res) {
-    res.sendStatus(200)
+    try {
+      let post = await Post.update(req.params.id, req.body)
+      res.status(200).json(post)
+    } catch(err) {
+      console.error(err)
+      res.status(500).json({ error: { message: 'Internal Server Error' } })
+    }
   }
 
   static async destroy(req, res) {

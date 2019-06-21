@@ -28,7 +28,11 @@ class Post {
   }
 
   static async update(post) {
-    return await db('posts').where({ id: id }).update(post)
+    await db('posts').where({ id: id }).update(post)
+
+    const new_post = await db('posts').where({ id: id })
+
+    return new_post
   }
 
   static async destroy(id) {
