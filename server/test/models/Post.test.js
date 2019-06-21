@@ -5,13 +5,23 @@
  */
 
 const db = require('../../db/client')
+const Post = require('../../models/Post')
 
 /**
  * Hooks
  */
 
+beforeAll(async () => {
+  await db.migrate.rollback(null, true)
+  await db.migrate.latest()
+})
+
 beforeEach(async () => {
-  await db('posts').truncate()
+  await db.seed.run()
+})
+
+afterAll(async () => {
+  await db.migrate.rollback(null, true)
 })
 
 /**
