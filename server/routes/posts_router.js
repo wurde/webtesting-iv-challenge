@@ -5,6 +5,7 @@
  */
 
 const express = require('express')
+const require_body = require('../middleware/checks/require_body')
 const PostsController = require('../controllers/PostsController')
 
 /**
@@ -20,6 +21,7 @@ const router = express.Router()
 
 router.route('/')
   .get(PostsController.index)
+  .all(require_body(['title', 'content']))
   .post(PostsController.create)
 
 /**
