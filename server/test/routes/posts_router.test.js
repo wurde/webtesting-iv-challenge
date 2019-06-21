@@ -35,7 +35,7 @@ describe('posts_router.js', () => {
   })
 
   test('POST /posts - success', async () => {
-    let res = await supertest(app).post('/posts').send({
+    const res = await supertest(app).post('/posts').send({
       title: faker.lorem.lines(1),
       content: faker.lorem.lines(3)
     })
@@ -50,11 +50,11 @@ describe('posts_router.js', () => {
   test.todo('POST /posts - missing request body fields')
 
   test('DELETE /posts/:id - success', async () => {
-    let res = await supertest(app).delete('/posts/1').send({
+    const res = await supertest(app).delete('/posts/1').send({
       title: faker.lorem.lines(1),
       content: faker.lorem.lines(3)
     })
-    let post = await db('posts').where({ id: 1 })
+    const post = await db('posts').where({ id: 1 })
 
     expect(res.status).toBe(200)
     expect(post.length).toBe(0)
