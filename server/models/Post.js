@@ -27,12 +27,12 @@ class Post {
     return new_post
   }
 
-  static async update(req, res) {
-    return true
+  static async update(post) {
+    return await db('posts').where({ id: id }).update(post)
   }
 
-  static async destroy(req, res) {
-    return true
+  static async destroy(id) {
+    return await db('posts').where({ id: id }).del()
   }
 }
 
