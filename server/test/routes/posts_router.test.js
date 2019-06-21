@@ -57,6 +57,8 @@ describe('posts_router.js', () => {
     const post = await db('posts').where({ id: 1 })
 
     expect(res.status).toBe(200)
+    expect(res.type).toBe('application/json')
+    expect(res.body).toBeFalsy()
     expect(post.length).toBe(0)
   })
 
