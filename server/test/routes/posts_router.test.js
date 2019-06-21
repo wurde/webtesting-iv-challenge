@@ -14,7 +14,6 @@ const db = require('../../db/client')
  */
 
 beforeAll(async () => {
-  await db.migrate.rollback(null, true)
   await db.migrate.latest()
 })
 
@@ -35,7 +34,7 @@ describe('posts_router.js', () => {
     expect(process.env.NODE_ENV).toBe('test')
   })
 
-  test('POST /posts', async () => {
+  test('POST /posts - success', async () => {
     let res = await supertest(app).post('/posts').send({
       title: faker.lorem.lines(1),
       content: faker.lorem.lines(3)
@@ -47,7 +46,10 @@ describe('posts_router.js', () => {
     expect(Object.keys(res.body[0]).toString()).toBe(['id', 'title', 'content', 'created_at', 'updated_at'].toString())
   })
 
-  test('DELETE /posts/:id', async () => {
+  test.todo('POST /posts - missing request body')
+  test.todo('POST /posts - missing request body fields')
+
+  test('DELETE /posts/:id - success', async () => {
     let res = await supertest(app).delete('/posts/1').send({
       title: faker.lorem.lines(1),
       content: faker.lorem.lines(3)
@@ -57,4 +59,6 @@ describe('posts_router.js', () => {
     expect(res.status).toBe(200)
     expect(post.length).toBe(0)
   })
+
+  test.todo('DELETE /posts/:id - not found')
 })

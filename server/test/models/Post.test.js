@@ -12,7 +12,6 @@ const Post = require('../../models/Post')
  */
 
 beforeAll(async () => {
-  await db.migrate.rollback(null, true)
   await db.migrate.latest()
 })
 
