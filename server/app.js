@@ -40,7 +40,7 @@ app.use('/', require('./routes/root_router'))
 app.use('/posts', require('./routes/posts_router'))
 
 /**
- * Dependencies
+ * Start server
  */
 
 if (module === require.main) {
