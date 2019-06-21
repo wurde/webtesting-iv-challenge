@@ -12,7 +12,13 @@ const Post = require('../models/Post')
 
 class PostsController {
   static async index(req, res) {
-    res.sendStatus(200)
+    try {
+      let posts = await Post.all()
+      res.status(200).json(posts)
+    } catch(err) {
+      console.error(err)
+      res.status(500).json({ error: { message: 'Internal Server Error' } })
+    }
   }
 
   static async show(req, res) {
